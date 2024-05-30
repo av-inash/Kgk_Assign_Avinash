@@ -13,6 +13,7 @@ const { loginUser,
 
 
 } = require("../controllers/user.controller.js");
+const { getNotification } = require("../controllers/notification.controller.js")
 const { verifyJwt } = require("../middlewares/auth.middleware.js");
 
 const validate = require("../helpers/validate.js");
@@ -35,6 +36,10 @@ router.post("/updatePassword", updatePassword)
 router.post("/changepassword", validate(userValidation.changePass), verifyJwt, changeCurrentPassword)
 router.put('/update-details', validate(userValidation.updateuserdetail), verifyJwt, userUpdate)
 router.post('/upload-image', verifyJwt, upload.single('image'), uploadImage)
+
+router.get('/get-notification', verifyJwt, getNotification)
+
+
 
 
 

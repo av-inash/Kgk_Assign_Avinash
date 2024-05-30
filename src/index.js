@@ -11,11 +11,12 @@ dotenv.config();
 const server = http.createServer(app)
 const io = socketio(server)
 bidsocket(io)
+console.log("socket is listening on 4002")
 
 
 connectDB()
     .then(() => {
-        // Use the http server instance to listen on the port
+
         server.listen(process.env.PORT || 4002, () => {
             console.log(`server is running at port : ${process.env.PORT || 4000}`);
         });
